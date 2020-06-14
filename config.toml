@@ -2,6 +2,7 @@ baseURL = "https://example.com"
 title = "Your title"
 theme = "hugo-theme-m10c"
 paginate = 5
+relativeURLs = true
 
 [params]
   author = "John Doe"
