@@ -1,8 +1,8 @@
-baseURL = "https://example.com"
+baseURL = "https://cradletograver1.netlify.app"
 title = "Your title"
 theme = "hugo-theme-m10c"
 paginate = 5
-relativeURLs = true
+
 
 [params]
   author = "John Doe"
