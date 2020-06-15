@@ -2,7 +2,7 @@ baseURL = "https://cradletograver.com"
 title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
 paginate = 5
-avatar = "C:\Users\markg\Documents\Site Test\CradleToGraveR\static\Images\Mark Gingrass bio photo2.JPG"
+
 [params]
   author = "Mark Gingrass"
   description = "CradleToGraveR is a one-stop shop for all things R related. Check out the video tutorials and real world examples."
