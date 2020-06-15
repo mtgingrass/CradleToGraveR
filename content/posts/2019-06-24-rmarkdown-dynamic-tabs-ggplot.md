@@ -1,10 +1,10 @@
 ---
-title: Rmarkdown Dynamic Tabs ggplot
+title: Dynamic Tabs with Rmarkdown and ggplot
 author: mtgingrass
 type: post
 date: 2019-06-24T14:46:37+00:00
 url: /2019/06/24/rmarkdown-dynamic-tabs-ggplot/
-featured_image: http://markgingrass.com/wp-content/uploads/2019/06/Add-a-Dynamic-Tabs-with-Rmarkdown.png
+featured_image: /wp-content/uploads/2019/06/Add-a-Dynamic-Tabs-with-Rmarkdown.png
 categories:
   - Programming
   - R
