@@ -1,0 +1,17 @@
+.so-widget-sow-image-grid-default-6e16c2cf1577 .sow-image-grid-wrapper {
+  padding-top: 5px;
+  line-height: 0;
+  text-align: center;
+}
+.so-widget-sow-image-grid-default-6e16c2cf1577 .sow-image-grid-wrapper .sow-image-grid-image {
+  padding: 0 5px 5px 5px;
+  display: inline-block;
+}
+.so-widget-sow-image-grid-default-6e16c2cf1577 .sow-image-grid-wrapper .sow-image-grid-image > a {
+  display: inline-block;
+}
+.so-widget-sow-image-grid-default-6e16c2cf1577 .sow-image-grid-wrapper .sow-image-grid-image img {
+  opacity: 0;
+  max-width: 100%;
+  height: auto;
+}
