@@ -23,7 +23,7 @@ How to create Dynamic Tabs  with Rmarkdown including plots like ggplot.
 
 This quick video tutorial will show you how to create an html file using RStudio with Rmarkdown and Knitr. More specifically, how to create dynamic number of tabs based on how many charts you have. There is an error in the knitr preview and this describes how to avoid that error as well. Rmarkdown generating ggplots in multiple plots in separate tabs causes an issue with preview, here is the fix.
 
-`r htmltools::HTML("{{< youtube KMTWjPLEolc >}}")`
+{{< youtube KMTWjPLEolc >}}
 
 ## TECH GEAR I USE DAILY
 
