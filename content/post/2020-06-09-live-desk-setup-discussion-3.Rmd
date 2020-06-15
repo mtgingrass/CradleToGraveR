@@ -11,9 +11,14 @@ categories:
 
 ## Test
 
-Test3
+TestRMD Embed
 
+```{r}
+library("htmltools")
+library("vembedr")
 
+embed_url("https://www.youtube.com/watch?v=DkWw5xgF0Ns")
+```
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DkWw5xgF0Ns" frameborder="0" allowfullscreen></iframe>
 
 https://www.youtube.com/embed/DkWw5xgF0Ns
