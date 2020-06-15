@@ -114,47 +114,40 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <div id="check-out-my-covid-analyis" class="section level1">
 <h1>Check out my COVID Analyis</h1>
 <p>This is the approach I used. I got the data from this source: <a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">ECDCP</a>
 # Import Data
 This is where we import data.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#these libraries need to be loaded</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(utils)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">library</span>(httr)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>static_url &lt;-<span class="st"> &quot;http://markgingrass.com/wp-content/uploads/2020/04/covid_data.csv&quot;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>ecdc_url &lt;-<span class="st"> &quot;https://opendata.ecdc.europa.eu/covid19/casedistribution/csv&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#download the dataset from the ECDC website to a local temporary file</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">GET</span>(ecdc_url, <span class="kw">authenticate</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot;:&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ntlm&quot;</span>), <span class="kw">write_disk</span>(tf &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.csv&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#these libraries need to be loaded</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">library</span>(utils)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">library</span>(httr)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>static_url &lt;-<span class="st"> &quot;http://markgingrass.com/wp-content/uploads/2020/04/covid_data.csv&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>ecdc_url &lt;-<span class="st"> &quot;https://opendata.ecdc.europa.eu/covid19/casedistribution/csv&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#download the dataset from the ECDC website to a local temporary file</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">GET</span>(ecdc_url, <span class="kw">authenticate</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot;:&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ntlm&quot;</span>), <span class="kw">write_disk</span>(tf &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.csv&quot;</span>)))</span></code></pre></div>
 <pre><code>## Response [https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/]
-##   Date: 2020-06-15 21:27
+##   Date: 2020-06-15 22:18
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 1.38 MB
-## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpKmHcNG\file4eb01e6766c5.csv</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#read the Dataset sheet into “R”. The dataset will be called &quot;data&quot;.</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(tf)</span></code></pre></div>
+## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpGOLT40\file5b3c684a48d.csv</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#read the Dataset sheet into “R”. The dataset will be called &quot;data&quot;.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(tf)</span></code></pre></div>
 </div>
 <div id="show-data-table" class="section level1">
 <h1>Show Data Table</h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">library</span>(DT)</span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a>edf &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">deathRate =</span> <span class="kw">sum</span>(deaths)<span class="op">/</span><span class="kw">sum</span>(cases))</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">datatable</span>(edf, <span class="dt">extensions =</span> <span class="st">&#39;Buttons&#39;</span>, <span class="dt">options =</span> <span class="kw">list</span>(</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="dt">dom =</span> <span class="st">&#39;Bfrtip&#39;</span>,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="dt">buttons =</span> <span class="kw">c</span>(<span class="st">&#39;copy&#39;</span>, <span class="st">&#39;csv&#39;</span>, <span class="st">&#39;excel&#39;</span>, <span class="st">&#39;pdf&#39;</span>, <span class="st">&#39;print&#39;</span>)</span>
-<span id="cb8-8"><a href="#cb8-8"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">library</span>(DT)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>edf &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">deathRate =</span> <span class="kw">sum</span>(deaths)<span class="op">/</span><span class="kw">sum</span>(cases))</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">datatable</span>(edf, <span class="dt">extensions =</span> <span class="st">&#39;Buttons&#39;</span>, <span class="dt">options =</span> <span class="kw">list</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="dt">dom =</span> <span class="st">&#39;Bfrtip&#39;</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="dt">buttons =</span> <span class="kw">c</span>(<span class="st">&#39;copy&#39;</span>, <span class="st">&#39;csv&#39;</span>, <span class="st">&#39;excel&#39;</span>, <span class="st">&#39;pdf&#39;</span>, <span class="st">&#39;print&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>))</span></code></pre></div>
 <pre><code>## Warning in instance$preRenderHook(instance): It seems your data is too big
 ## for client-side DataTables. You may consider server-side processing: https://
 ## rstudio.github.io/DT/server.html</code></pre>
@@ -165,24 +158,22 @@ This is where we import data.</p>
 <h1>Graph 1</h1>
 <div id="graph-1a" class="section level2">
 <h2>Graph 1a</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>edf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(deaths <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="st">  </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Cases_Total =</span> <span class="kw">sum</span>(cases), <span class="dt">Deaths_Total =</span> <span class="kw">sum</span>(deaths)) <span class="op">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> countriesAndTerritories)) <span class="op">+</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Deaths_Total, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<p><img src="/posts/2020-04-02-fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>edf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(deaths <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Cases_Total =</span> <span class="kw">sum</span>(cases), <span class="dt">Deaths_Total =</span> <span class="kw">sum</span>(deaths)) <span class="op">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> countriesAndTerritories)) <span class="op">+</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Deaths_Total, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="/posts/2020-04-02-fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 ## Graph 1b
 </p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>edf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(deaths <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="st">  </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Cases_Total =</span> <span class="kw">sum</span>(cases), <span class="dt">Deaths_Total =</span> <span class="kw">sum</span>(deaths)) <span class="op">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> countriesAndTerritories)) <span class="op">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Cases_Total)) <span class="op">+</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<p><img src="/posts/2020-04-02-fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>edf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(deaths <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="st">  </span><span class="kw">group_by</span>(countriesAndTerritories) <span class="op">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Cases_Total =</span> <span class="kw">sum</span>(cases), <span class="dt">Deaths_Total =</span> <span class="kw">sum</span>(deaths)) <span class="op">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> countriesAndTerritories)) <span class="op">+</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Cases_Total)) <span class="op">+</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="/posts/2020-04-02-fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>

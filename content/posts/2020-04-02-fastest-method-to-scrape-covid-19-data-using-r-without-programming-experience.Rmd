@@ -19,13 +19,16 @@ output:
   blogdown::html_page:
     toc: true
     highlight: tango
-    code_download: true
 ---
+```{r}
+knitr::opts_chunk$set(message = FALSE)
+```
 
 # Check out my COVID Analyis
 This is the approach I used. I got the data from this source: [ECDCP](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
 # Import Data
 This is where we import data.
+
 
 ```{r}
 #these libraries need to be loaded
