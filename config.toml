@@ -1,4 +1,4 @@
-baseURL = "https://cradletograver1.netlify.app"
+baseURL = "https://cradletograver.com"
 title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
 paginate = 5
