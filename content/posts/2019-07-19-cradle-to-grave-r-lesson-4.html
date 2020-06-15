@@ -1,0 +1,212 @@
+---
+title: 🤱Cradle to Grave ⚰R – Vectors and Functions – Lesson 4
+author: mtgingrass
+type: post
+date: 2019-07-19T22:34:21+00:00
+url: /2019/07/19/cradle-to-grave-r-lesson-4/
+featured_image: http://markgingrass.com/wp-content/uploads/2019/07/Cradle-to-Grave-R-4.png
+classic-editor-remember:
+  - classic-editor
+tap_disable_autolinker:
+  - no
+tap_autolink_inside_heading:
+  - global
+tap_autolink_random_placement:
+  - global
+categories:
+  - Programming
+  - R
+
+---
+
+
+
+<p>In lesson 3, we learned some more cool Markdown features in R. In this lesson, we’re going to look at Vectors and Functions.</p>
+<div id="ez-toc-container" class="ez-toc-v2_0_11 counter-hierarchy counter-decimal ez-toc-grey">
+<div class="ez-toc-title-container">
+<pre><code>&lt;p class=&quot;ez-toc-title&quot;&gt;
+  Overview
+&lt;/p&gt;
+
+&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot;&gt;&lt;i class=&quot;ez-toc-glyphicon ez-toc-icon-toggle&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;</code></pre>
+</div>
+<p><nav></p>
+<ul class="ez-toc-list ez-toc-list-level-1">
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-1" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Clear_the_Old_File" title="Clear the Old File">Clear the Old File</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-2" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Vectors_and_the_Matrix" title="Vectors and the Matrix">Vectors and the Matrix</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-3" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Assign_a_Vector_to_a_Variable" title="Assign a Vector to a Variable">Assign a Vector to a Variable</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-4" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Sums_with_Variables_and_Vectors" title="Sums with Variables and Vectors">Sums with Variables and Vectors</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-5" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Assign_New_Values_to_the_Old_Variable" title="Assign New Values to the Old Variable">Assign New Values to the Old Variable</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-6" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Useful_Shortcuts" title="Useful Shortcuts">Useful Shortcuts</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-7" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Mean_Average,_Length,_Cumsum_(Cumulative)" title="Mean Average, Length, Cumsum (Cumulative)">Mean Average, Length, Cumsum (Cumulative)</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-8" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Min,_Max,_Unique,_and_Sort_Functions" title="Min, Max, Unique, and Sort Functions">Min, Max, Unique, and Sort Functions</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-9" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Changing_How_the_Commands_Work" title="Changing How the Commands Work">Changing How the Commands Work</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-10" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Rounding_in_R" title="Rounding in R">Rounding in R</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-11" href="http://markgingrass.com/2019/07/19/cradle-to-grave-r-lesson-4/#Summary" title="Summary">Summary</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="clear-the-old-file" class="section level2">
+<h2><span id="Clear_the_Old_File" class="ez-toc-section"></span>Clear the Old File<span class="ez-toc-section-end"></span></h2>
+Before we start this lesson you’re going to need to clear the file that we’ve been using in lesson 3 out of the way.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-06-07-81-1024x634.png" alt="" class="wp-image-799" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-06-07-81-1024x634.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-06-07-81-300x186.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-06-07-81-768x475.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-06-07-81.png 1725w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Use the ‘x’ symbol to close down your R Markdown file
+</figcaption>
+</figure>
+<p>To do this, simply click on the <strong>x</strong> button at the top of the R Markdown window (in the file-name tab) to close down that window. Once you’ve done this you’ll see the Console now fills up the space where it used to be. We’re back in the console, and there’s nothing in our Global Environment. If you want to re-open the R Markdown file, it’s located under the Files tab in the lower-left box, as the file name ending <strong>.Rmd</strong></p>
+</div>
+<div id="vectors-and-the-matrix" class="section level2">
+<h2><span id="Vectors_and_the_Matrix" class="ez-toc-section"></span>Vectors and the Matrix<span class="ez-toc-section-end"></span></h2>
+<p>A little bit of history: R was originally built for statisticians, who deal with a lot of numbers and inevitably this means using matrices (the plural for matrix). Essentially a matrix is a large spreadsheet of data in rows and columns. The data contained in one vertical column of that matrix can be considered a <strong>vector</strong>. This could be a string of numbers, or bits of text, but not a combination of both.</p>
+<p>R is very powerful with regards to how we use <strong>vectors</strong>. Imagine that we want to multiply each number in a vector, say the first column in a matrix, by 2. Instead of having to program a loop to work through each of the thousand numbers in the column and multiply them by 2, individually, and store their new value again, we can simply use an R function that does this with the entire <strong>vector</strong> at once. This makes our life much easier.</p>
+</div>
+<div id="assign-a-vector-to-a-variable" class="section level2">
+<h2><span id="Assign_a_Vector_to_a_Variable" class="ez-toc-section"></span>Assign a Vector to a Variable<span class="ez-toc-section-end"></span></h2>
+<p>Remember in the previous lessons where we assigned numbers to the letters X and Y? We’re going to do something similar here with a <strong>vector</strong> (a whole string of data from a matrix). In the Console, type:<br />
+<strong>number1 &lt;- c(1,3,4,7,10,11,4)</strong><br />
+And hit <strong>enter</strong></p>
+Just before we discuss what this does, I want to make a point to say that you can use the equals sign <strong>=</strong> instead of the less than and dash symbols <strong>&lt;-</strong> but I prefer to use the latter to avoid confusion with other uses of the equals sign. This is a good practice for you to follow too.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-90-1024x630.png" alt="" class="wp-image-804" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-90-1024x630.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-90-300x185.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-90-768x473.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-90.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+The values for “number1” are displayed in the Global Environment
+</figcaption>
+</figure>
+<p>As we’re in the Console, once you hit <strong>enter</strong> that line of code will run and the results will display in the Global Environment window. You can see the variable called <strong>number1</strong> takes on the values of <strong>num</strong> (which means numeric values), <strong>[1:7]</strong> (which means numbers 1 through 7 are stored as a single vector, because we entered 7 numbers in our code), and the numbers we stored are also displayed.</p>
+</div>
+<div id="sums-with-variables-and-vectors" class="section level2">
+<h2><span id="Sums_with_Variables_and_Vectors" class="ez-toc-section"></span>Sums with Variables and Vectors<span class="ez-toc-section-end"></span></h2>
+We discussed before that you can complete simple calculations in the Console. Go to a new line, type <strong>sum(2,2)</strong> then hit <strong>enter</strong>. The Console will display a result of 4. You can try other sums too. The examples I use in the video are <strong>sum (3,5)</strong> and <strong>sum(3,4,5)</strong>. Unlike some other languages, you don’t need to define how many elements you’re using in the sum, because R can just take the “column” of numbers and complete the sum.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-80-1024x631.png" alt="" class="wp-image-805" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-80-1024x631.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-80-300x185.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-80-768x473.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-12-07-80.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Calculating the sum of our “number1” variable
+</figcaption>
+</figure>
+<p>You can even use the variable <strong>number1</strong> and calculate the sum of the numbers contained in it. Type <strong>sum(number1)</strong> and hit <strong>enter</strong> for a result of 40. If you want you can go ahead and check that the 7 numbers in the variable add up to 40.</p>
+You can do another cool trick and multiply the numbers inside the variable. Type <strong>number1 * 2</strong> and hit enter. The results display all the individual elements of our variable multiplied by 2. On the next line if you type <strong>number1</strong> again you’ll see that the results displayed are back to their old values. Why is that? It’s because we didn’t assign the new values to a variable, so they’re not stored in memory anywhere.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-16-1024x631.png" alt="" class="wp-image-806" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-16-1024x631.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-16-300x185.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-16-768x473.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-16.png 1724w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Using variables in sums in R
+</figcaption>
+</figure>
+</div>
+<div id="assign-new-values-to-the-old-variable" class="section level2">
+<h2><span id="Assign_New_Values_to_the_Old_Variable" class="ez-toc-section"></span>Assign New Values to the Old Variable<span class="ez-toc-section-end"></span></h2>
+<p>To store the new values in memory, we’re going to use the same method as before. Type <strong>number1 &lt;- number1 * 2</strong> and hit <strong>enter</strong>. You’ll notice we used the same variable twice in that one line of code, but don’t worry it won’t cause any problems. The Console will first figure out everything to the right-hand side of the <strong>&lt;-</strong> and will then assign those values to the variable named on the left-hand side.</p>
+Take a look in the Global Environment once you’ve run that code line and see that the numbers have all doubled from their previous values.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-58-1024x597.png" alt="" class="wp-image-807" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-58-1024x597.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-58-300x175.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-58-768x448.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-58.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+The new doubled values for our “<strong>number1</strong>” variable
+</figcaption>
+</figure>
+<p>You can even double-check by typing <strong>number1</strong> again into the Console and seeing the results are different this time.</p>
+</div>
+<div id="useful-shortcuts" class="section level2">
+<h2><span id="Useful_Shortcuts" class="ez-toc-section"></span>Useful Shortcuts<span class="ez-toc-section-end"></span></h2>
+<p>There’s a couple of useful shortcuts I want to point out to you that can make your work quicker and easier.</p>
+<p>The first is that the Console stores a kind of history of your previous commands which you can access by using the <strong>up</strong> and <strong>down</strong> cursor keys. If you’re on a new line and you use the <strong>up</strong> key, the previous command line you entered will auto-fill. Press up again and the one previous to that will appear, and so on. This can save you a lot of time when you’re using duplicated commands or typing very similar things with only small changes.</p>
+The next one is an auto-complete shortcut built into the program. A good example of use is when you’re typing a variable such as <strong>number1</strong>, just type the first couple of letters and then hit the <strong>tab</strong> key on your keyboard. This will bring up a list of common elements starting with <strong>nu</strong>… and you can select the one you want.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-60-1024x633.png" alt="" class="wp-image-808" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-60-1024x633.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-60-300x185.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-60-768x475.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-60.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+The <strong>tab</strong> key brings up an auto-complete list
+</figcaption>
+</figure>
+</div>
+<div id="mean-average-length-cumsum-cumulative" class="section level2">
+<h2><span id="Mean_Average,_Length,_Cumsum_(Cumulative)" class="ez-toc-section"></span>Mean Average, Length, Cumsum (Cumulative)<span class="ez-toc-section-end"></span></h2>
+<p>If you want to find the <strong>mean</strong> (average) of any set of numbers you can again simply type <strong>mean(number1)</strong> and hit <strong>enter</strong> – in our example, you can see this gives a result of 11.42857. This is the mean average of all the values stored in the variable <strong>number1</strong>.</p>
+<p>Another command, <strong>length</strong>, requires a little more explanation. Type out <strong>length(number1)</strong> and press <strong>enter</strong>. The result, in this case, is 7. You can understand this by seeing that there are 7 elements or values contained in the <strong>number1</strong> variable.</p>
+You can also perform a cumulative sum of all the numbers in the variable by using the command <strong>cumsum(number1)</strong>. And the results you should get are 2, 8, 16, 30, 50, 72, 80.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-41-1024x594.png" alt="" class="wp-image-809" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-41-1024x594.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-41-300x174.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-41-768x446.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-13-07-41.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Length, cumsum, min, max, unique and sort functions in R
+</figcaption>
+</figure>
+</div>
+<div id="min-max-unique-and-sort-functions" class="section level2">
+<h2><span id="Min,_Max,_Unique,_and_Sort_Functions" class="ez-toc-section"></span>Min, Max, Unique, and Sort Functions<span class="ez-toc-section-end"></span></h2>
+<p>Some more functions to try are:</p>
+<p><strong>min(number1)</strong><br />
+To find the lowest value</p>
+<p><strong>max(number1)</strong><br />
+To find the highest value</p>
+<p><strong>unique(number1)</strong><br />
+To find the unique values</p>
+<p><strong>sort(number1)</strong><br />
+To sort the values into order</p>
+</div>
+<div id="changing-how-the-commands-work" class="section level2">
+<h2><span id="Changing_How_the_Commands_Work" class="ez-toc-section"></span>Changing How the Commands Work<span class="ez-toc-section-end"></span></h2>
+To add another layer of detail, I want to explain how we can change the way the <strong>sort</strong> command works.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-28-1024x629.png" alt="" class="wp-image-810" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-28-1024x629.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-28-300x184.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-28-768x472.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-28.png 1723w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Extra parameters of the command are shown in the yellow box
+</figcaption>
+</figure>
+<p>On a new line, type the sort command again:<br />
+<strong>sort(number1)</strong><br />
+BUT DON’T MOVE your cursor or press enter after you’ve typed the number 1 and you’ll see a yellow pop-up showing us some more details about the <strong>sort</strong> command: <em>sort(x, decreasing = FALSE, …)</em></p>
+<p>We’re going to break this down and cover the first two parts <strong>x</strong> and <strong>decreasing = FALSE</strong>.</p>
+<p>The <strong>x</strong> is a piece of data, such as a number or our variable <strong>number1</strong>, so if we only enter this part inside the parenthesis then the program will assume all the standard rules apply when you run the code.</p>
+If you then enter a comma <strong>,</strong> and then hit <strong>tab</strong> you’ll see the autocomplete list with some suggestions for the next part of the command. These autocomplete suggestions are also accompanied by short explanations of their purpose. Go down the list to <strong>decreasing =</strong> and hit <strong>enter</strong> and this will insert that part of the command. Lastly, type <strong>TRUE</strong> in capitals. The whole line should look like this:<br />
+<strong>sort(number1, decreasing = TRUE)</strong>
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-36-1024x611.png" alt="" class="wp-image-811" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-36-1024x611.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-36-300x179.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-36-768x458.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-36.png 1724w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+The autocomplete suggestions will have explanations
+</figcaption>
+</figure>
+<p>Now when you hit <strong>enter</strong> again to run that line of code, the result will be the numbers sorted in decreasing order.</p>
+</div>
+<div id="rounding-in-r" class="section level2">
+<h2><span id="Rounding_in_R" class="ez-toc-section"></span>Rounding in R<span class="ez-toc-section-end"></span></h2>
+Another example of how we can change how things work is with the <strong>round</strong> command. Try typing <strong>round(2.3456)</strong> and notice the yellow pop-up box showing <em>round(x, digits = 0)</em>. This means the standard rounding would take the number to 0 digits. We can override the default by typing <strong>round(2.3456, digits = 2)</strong> and hitting <strong>enter</strong> to get a result of 2.35, rounded to 2 decimal places. You can try finding the <strong>digits =</strong> command by using the <strong>tab</strong> key to search for autocomplete suggestions while you’re typing that line out if you prefer.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-86-1024x625.png" alt="" class="wp-image-812" srcset="https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-86-1024x625.png 1024w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-86-300x183.png 300w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-86-768x469.png 768w, https://markgingrass.com/wp-content/uploads/2019/07/AwesomeScreenshot-Cradle-to-Grave-R-Vectors-and-Functions-Lesson-4-YouTube-2019-07-29-15-07-86.png 1723w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Use ‘<strong>x =</strong>‘ if typing out of the normal order
+</figcaption>
+</figure>
+<p>You can actually construct these command lines in a different order so long as you use <strong>x =</strong> to define the data. The following examples are correct and will give you no problems:<br />
+<strong>round(2.3456, digits = 3)</strong><br />
+<strong>round(digits = 3, x = 2.3456)</strong></p>
+<p>The next example is wrong, see if you can figure out why:<br />
+<strong>round(3,2.3456)</strong></p>
+<p>Did you catch why it wouldn’t work? Because we entered things out of order and didn’t define which was data <strong>x</strong> and which was <strong>digits</strong>, the program thought that ‘3’ was the data, and rounded it to 3.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span id="Summary" class="ez-toc-section"></span>Summary<span class="ez-toc-section-end"></span></h2>
+<p>You should now know some more commands in R such as <strong>round</strong>, <strong>sort</strong>, <strong>min</strong>, <strong>max</strong>, plus others. Not only that but you now know how to alter the details of how these commands work.</p>
+<p>I hope you found the lesson useful and if you did please let me know in the comments!</p>
+<p>[embedyt] <a href="https://youtu.be/XZp9B3n4jPs%5B/embedyt%5D" class="uri">https://youtu.be/XZp9B3n4jPs[/embedyt]</a></p>
+</div>

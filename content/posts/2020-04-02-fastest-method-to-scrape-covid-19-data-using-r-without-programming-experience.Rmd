@@ -1,0 +1,81 @@
+---
+title: Fastest Method to Scrape COVID 19 Data using R without Programming Experience
+author: mtgingrass
+type: post
+date: 2020-04-02T22:48:36+00:00
+url: /2020/04/02/fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience/
+classic-editor-remember:
+  - classic-editor
+tap_disable_autolinker:
+  - no
+tap_autolink_inside_heading:
+  - global
+tap_autolink_random_placement:
+  - global
+categories:
+  - Programming
+  - R
+output:
+  blogdown::html_page:
+    toc: true
+    highlight: tango
+    code_download: true
+---
+
+# Check out my COVID Analyis
+This is the approach I used. I got the data from this source: [ECDCP](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
+# Import Data
+This is where we import data.
+
+```{r}
+#these libraries need to be loaded
+
+library(utils)
+library(httr)
+static_url <- "http://markgingrass.com/wp-content/uploads/2020/04/covid_data.csv"
+ecdc_url <- "https://opendata.ecdc.europa.eu/covid19/casedistribution/csv"
+#download the dataset from the ECDC website to a local temporary file
+GET(ecdc_url, authenticate(":", ":", type="ntlm"), write_disk(tf <- tempfile(fileext = ".csv")))
+
+#read the Dataset sheet into “R”. The dataset will be called "data".
+data <- read.csv(tf)
+```
+
+# Show Data Table
+
+```{r}
+library(dplyr)
+library(DT)
+
+edf <- data %>% group_by(countriesAndTerritories) %>%
+  mutate(deathRate = sum(deaths)/sum(cases))
+datatable(edf, extensions = 'Buttons', options = list(
+  dom = 'Bfrtip',
+  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+))
+```
+
+# Graph 1 {.tabset}
+## Graph 1a
+
+```{r}
+library(ggplot2)
+edf %>% filter(deaths > 100) %>%
+  group_by(countriesAndTerritories) %>%
+  summarise(Cases_Total = sum(cases), Deaths_Total = sum(deaths)) %>%
+  ggplot(aes(x = countriesAndTerritories)) +
+  geom_point(aes(y = Deaths_Total, color = "red")) +
+  coord_flip()
+```
+
+
+## Graph 1b</p>
+
+```{r}
+edf %>% filter(deaths > 100) %>%
+  group_by(countriesAndTerritories) %>%
+  summarise(Cases_Total = sum(cases), Deaths_Total = sum(deaths)) %>%
+  ggplot(aes(x = countriesAndTerritories)) +
+  geom_point(aes(y = Cases_Total)) +
+  coord_flip()
+```

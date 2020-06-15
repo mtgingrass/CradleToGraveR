@@ -2,10 +2,14 @@ baseURL = "https://cradletograver.com"
 title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
 paginate = 10
-
+pygmentsCodeFences = true
 # NOtes
 # Embed YouTube Videos: `r htmltools::HTML("{{< youtube DkWw5xgF0Ns >}}")`
-
+highlightjsVersion = "9.11.0"
+highlightjsCDN = "//cdn.bootcss.com"
+highlightjsLang = ["r", "yaml"]
+highlightjsTheme = "github"
+    
 [params]
   author = "Mark Gingrass"
   description = "CradleToGraveR is a one-stop shop for all things R related. Check out the video tutorials and real world examples."

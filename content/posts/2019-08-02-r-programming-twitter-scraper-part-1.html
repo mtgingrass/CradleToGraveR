@@ -1,0 +1,135 @@
+---
+title: R Programming Twitter Scraper – Part 1
+author: mtgingrass
+type: post
+date: 2019-08-02T11:20:32+00:00
+url: /2019/08/02/r-programming-twitter-scraper-part-1/
+featured_image: http://markgingrass.com/wp-content/uploads/2019/08/SCRAPE-TWITTER-WITH-R-2560-featured.jpg
+classic-editor-remember:
+  - block-editor
+tap_disable_autolinker:
+  - no
+tap_autolink_inside_heading:
+  - global
+tap_autolink_random_placement:
+  - global
+categories:
+  - Uncategorized
+tags:
+  - programming
+  - r
+  - rprogramming
+  - Tweet
+  - twitter
+
+---
+
+
+
+<p>In this lesson, you’ll learn how to use R Programming to capture Twitter search results and how to grab tweets from someone you’re interested in.</p>
+<div id="ez-toc-container" class="ez-toc-v2_0_11 counter-hierarchy counter-decimal ez-toc-grey">
+<div class="ez-toc-title-container">
+<pre><code>&lt;p class=&quot;ez-toc-title&quot;&gt;
+  Overview
+&lt;/p&gt;
+
+&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot;&gt;&lt;i class=&quot;ez-toc-glyphicon ez-toc-icon-toggle&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;</code></pre>
+</div>
+<p><nav></p>
+<ul class="ez-toc-list ez-toc-list-level-1">
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-1" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Register_for_a_Twitter_API" title="Register for a Twitter API">Register for a Twitter API</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-2" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Using_Your_API_Keys_in_R_Studio" title="Using Your API Keys in R Studio">Using Your API Keys in R Studio</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-3" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Install_Libraries" title="Install Libraries ">Install Libraries </a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-4" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Grab_Some_Tweets_Using_the_Code" title="Grab Some Tweets Using the Code">Grab Some Tweets Using the Code</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-5" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Place_the_Tweets_into_Data_Frames" title="Place the Tweets into Data Frames">Place the Tweets into Data Frames</a>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-6" href="http://markgingrass.com/2019/08/02/r-programming-twitter-scraper-part-1/#Write_Your_Data_Frames_to_CSV" title="Write Your Data Frames to CSV">Write Your Data Frames to CSV</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="register-for-a-twitter-api" class="section level2">
+<h2><span id="Register_for_a_Twitter_API" class="ez-toc-section"></span>Register for a Twitter API<span class="ez-toc-section-end"></span></h2>
+<p>Before interacting with Twitter you need to register for a Twitter API. To do this go to <strong><a rel="noreferrer noopener" aria-label="apps.twitter.com (opens in a new tab)" href="https://apps.twitter.com" target="_blank">apps.twitter.com</a></strong> – this is completely free, simple and only takes a couple of minutes to do.</p>
+<div class="wp-block-image">
+<figure class="aligncenter">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_37-1024x711.png" alt="" class="wp-image-847" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_37-1024x711.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_37-300x208.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_37-768x533.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_37.png 1122w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Click “Create New App”
+</figcaption>
+</figure>
+</div>
+If you’re not registered on the <a class="thirstylink" target="_blank" title="SiteUnderground Link" href="http://markgingrass.com/recommends/siteunderground-link/" data-shortcode="true">site</a> you’ll need to go ahead and complete that part and sign in. Once that’s done, you should see a <a class="thirstylink" target="_blank" title="Screen" href="https://amzn.to/2LMDuep" data-linkid="814" data-shortcode="true">screen</a> similar to the one above, except that you won’t have any apps like my “TrumpGrabber” there. Click on <strong>Create New App</strong>, and you’ll see this <a class="thirstylink" target="_blank" title="Screen" href="https://amzn.to/2LMDuep" data-linkid="814" data-shortcode="true">screen</a> next:
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_44-1024x516.png" alt="" class="wp-image-848" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_44-1024x516.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_44-300x151.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_44-768x387.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-01_2_44.png 1725w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+You need to fill in everything apart from “Callback URL”
+</figcaption>
+</figure>
+<p>For <strong>Name</strong> and <strong>Description</strong> you can make up your own, anything you like. In the <strong>Website</strong> section, the small print says that you don’t <em>have</em> to have a website, so just fill this in with something as a place holder for now, and we can come back and change it later. You don’t need to fill in the <strong>Callback URL</strong>.</p>
+<p>Then hit <strong>Create your Twitter application</strong> down at the bottom of the page and this is going to give you access to an <strong>API Key</strong>, ****a <strong>Secret API Key</strong> and <strong>Token Keys</strong>. That part should be pretty self-explanatory.</p>
+</div>
+<div id="using-your-api-keys-in-r-studio" class="section level2">
+<h2><span id="Using_Your_API_Keys_in_R_Studio" class="ez-toc-section"></span>Using Your API Keys in R Studio<span class="ez-toc-section-end"></span></h2>
+Switch to R Studio and we’ll figure out how to use your API keys in your code.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_08-1024x603.png" alt="" class="wp-image-851" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_08-1024x603.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_08-300x177.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_08-768x452.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_08.png 1725w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+How to place your API keys in R Studio
+</figcaption>
+</figure>
+<p>Following the example in the screenshot above, paste your API codes in the relevant spots on lines 5-9 replacing the XXXXXs with the codes. Copy the <strong>API Key</strong> from Twitter to the API Key line in the code. Copy the <strong>API Secret</strong> from Twitter to the API Secret line in the code. The hardest part of this is getting the <strong>Access Token</strong> which you’ll need to grab by clicking <strong>generate</strong> <strong>token</strong> on the Twitter account.</p>
+</div>
+<div id="install-libraries" class="section level2">
+<h2><span id="Install_Libraries" class="ez-toc-section"></span>Install Libraries <span class="ez-toc-section-end"></span></h2>
+There are two libraries we need to install, <strong>twitteR</strong> and <strong>ROAuth</strong>, both shown in the screenshot above. You can include these in the code, but you might have to install them.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_19-1024x603.png" alt="" class="wp-image-852" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_19-1024x603.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_19-300x177.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_19-768x452.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_19.png 1726w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Installing libraries in R Studio
+</figcaption>
+</figure>
+<p>To do so, go to the <strong>Packages</strong> tab in the lower-left and then the <strong>Install</strong> tab. In the pop-up search the name of the first library by starting to type <strong>twitteR</strong> and as you type the list will shorten until you find the library you want. Capitals do matter here so make sure to get them right. Hit install when you’re done and repeat for <strong>ROAuth</strong>.</p>
+</div>
+<div id="grab-some-tweets-using-the-code" class="section level2">
+<h2><span id="Grab_Some_Tweets_Using_the_Code" class="ez-toc-section"></span>Grab Some Tweets Using the Code<span class="ez-toc-section-end"></span></h2>
+Line 11 is where the magic starts to happen and you connect to the Twitter API. This line instructs the program to set up the Twitter OAuth, enter the API key and secret, access token and access token secret.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_32-1024x602.png" alt="" class="wp-image-854" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_32-1024x602.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_32-300x176.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_32-768x451.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_32.png 1727w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Run lines 14-16
+</figcaption>
+</figure>
+<p>Lines 14-16 describe to the program what tweets to grab from Twitter.</p>
+<p>Line 14 asks for the last 50 (<strong>n=50</strong>) tweets from the username <strong>realDonaldTrump</strong> and assigns these to the variable <strong>tweets_trump</strong>.</p>
+<p>Line 15 asks for the last 200 tweets containing <strong><span class="citation">@realDonaldTrump</span></strong> and assigns them to <strong>tweets_trump2</strong>.</p>
+<p>Line 16 looks for the last tweets containing <strong>morning</strong>+<strong>bacon</strong> and assigns them to <strong>tweets_trump3</strong>.</p>
+<p>It’s important to know that there’s a limit to how far back you can go with the Twitter API. At some point in the last week or ten days or so, you won’t be able to grab any more data.</p>
+</div>
+<div id="place-the-tweets-into-data-frames" class="section level2">
+<h2><span id="Place_the_Tweets_into_Data_Frames" class="ez-toc-section"></span>Place the Tweets into Data Frames<span class="ez-toc-section-end"></span></h2>
+Go ahead and run lines 19-21 and this will assign the data in our variables into data frames shown in the Global Environment. Click on <strong>tweets.df</strong> to bring up the list of data contained inside.
+<figure class="wp-block-image">
+<img src="http://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_44-1024x604.png" alt="" class="wp-image-855" srcset="https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_44-1024x604.png 1024w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_44-300x177.png 300w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_44-768x453.png 768w, https://markgingrass.com/wp-content/uploads/2019/08/AwesomeScreenshot-www-youtube-watch-2019-08-02_3_44.png 1724w" sizes="(max-width: 1024px) 100vw, 1024px" />
+<figcaption>
+Click on <strong>tweets.df</strong> to bring up a list of the data contained
+</figcaption>
+</figure>
+<p>On the left-hand side, you’ll see the various tweets sorted into rows and columns including the text of the tweet, how many times it’s been favorited when it was created, and so on. The reason we use data frames is that the data is easier to manipulate in this form compared to just using the variables such as <strong>tweets_trump</strong> where all the data is more compacted and not so useful.</p>
+</div>
+<div id="write-your-data-frames-to-csv" class="section level2">
+<h2><span id="Write_Your_Data_Frames_to_CSV" class="ez-toc-section"></span>Write Your Data Frames to CSV<span class="ez-toc-section-end"></span></h2>
+<p>Lastly, you can write the data to <strong>comma separated value</strong> files (<strong>CSV)</strong> by using the code <strong>write.csv</strong> and then specifying the variables as per lines 23-25. This way you’ll be able to bring up the data in Excel or Google Sheets too.</p>
+<p>That’s all it takes to create a tweet scraper using R Programming. I hope you enjoyed this lesson, please leave a comment down below!</p>
+<p>[embedyt] <a href="https://www.youtube.com/watch?v=1_K01qD4Exw%5B/embedyt%5D" class="uri">https://www.youtube.com/watch?v=1_K01qD4Exw[/embedyt]</a></p>
+</div>
