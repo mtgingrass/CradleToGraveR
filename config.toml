@@ -1,7 +1,7 @@
 baseURL = "https://cradletograver.com"
 title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
-paginate = 5
+paginate = 10
 
 # NOtes
 # Embed YouTube Videos: `r htmltools::HTML("{{< youtube DkWw5xgF0Ns >}}")`
