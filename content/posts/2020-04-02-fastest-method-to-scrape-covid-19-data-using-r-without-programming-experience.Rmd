@@ -21,7 +21,7 @@ output:
     highlight: tango
 ---
 ```{r}
-knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
 # Check out my COVID Analyis
