@@ -1,18 +1,18 @@
 baseURL = "https://cradletograver1.netlify.app"
-title = "Your title"
+title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
 paginate = 5
 
 
 [params]
-  author = "John Doe"
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium."
+  author = "Mark Gingrass"
+  description = "CradleToGraveR is a one-stop shop for all things R related. Check out the video tutorials and real world examples."
   [[params.social]]
     name = "github"
-    url = "https://github.com/gohugoio"
+    url = "https://github.com/mtgingrass"
   [[params.social]]
     name = "twitter"
-    url = "https://twitter.com/gohugoio"
+    url = "https://twitter.com/markgingrass"
 
   # Brown theme
   #[params.style]
