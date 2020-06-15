@@ -3,6 +3,9 @@ title = "Cradle to Grave R"
 theme = "hugo-theme-m10c"
 paginate = 5
 
+# NOtes
+# Embed YouTube Videos: `r htmltools::HTML("{{< youtube DkWw5xgF0Ns >}}")`
+
 [params]
   author = "Mark Gingrass"
   description = "CradleToGraveR is a one-stop shop for all things R related. Check out the video tutorials and real world examples."
