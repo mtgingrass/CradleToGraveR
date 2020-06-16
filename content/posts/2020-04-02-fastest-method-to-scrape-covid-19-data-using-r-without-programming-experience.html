@@ -4,6 +4,7 @@ author: mtgingrass
 type: post
 date: 2020-04-02T22:48:36+00:00
 url: /2020/04/02/fastest-method-to-scrape-covid-19-data-using-r-without-programming-experience/
+featured_image:
 classic-editor-remember:
   - classic-editor
 tap_disable_autolinker:
@@ -129,11 +130,11 @@ This is where we import data.</p>
 <span id="cb2-7"><a href="#cb2-7"></a><span class="co">#download the dataset from the ECDC website to a local temporary file</span></span>
 <span id="cb2-8"><a href="#cb2-8"></a><span class="kw">GET</span>(ecdc_url, <span class="kw">authenticate</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot;:&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ntlm&quot;</span>), <span class="kw">write_disk</span>(tf &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.csv&quot;</span>)))</span></code></pre></div>
 <pre><code>## Response [https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/]
-##   Date: 2020-06-16 00:27
+##   Date: 2020-06-16 01:18
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 1.38 MB
-## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpEPzEcL\file1e00301f774a.csv</code></pre>
+## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpCOZPwj\file1c9063859f4.csv</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#read the Dataset sheet into “R”. The dataset will be called &quot;data&quot;.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(tf)</span></code></pre></div>
 </div>
