@@ -4,6 +4,7 @@
     <ul class="posts-list">
       {{ range $index, $element := .Paginator.Pages }}
         <li class="posts-list-item">
+          <a href="{{ .Permalink }}"> {{ with .Params.featured_image }}<img src="{{ . }}" style="width:320px;height:180px;">{{ end }}</a> <BR><BR>
           <a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}</a>
           <span class="posts-list-item-description">
             {{ partial "icon.html" (dict "ctx" $ "name" "clock") }} {{ .ReadingTime }} min read -

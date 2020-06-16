@@ -129,11 +129,11 @@ This is where we import data.</p>
 <span id="cb2-7"><a href="#cb2-7"></a><span class="co">#download the dataset from the ECDC website to a local temporary file</span></span>
 <span id="cb2-8"><a href="#cb2-8"></a><span class="kw">GET</span>(ecdc_url, <span class="kw">authenticate</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot;:&quot;</span>, <span class="dt">type=</span><span class="st">&quot;ntlm&quot;</span>), <span class="kw">write_disk</span>(tf &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">&quot;.csv&quot;</span>)))</span></code></pre></div>
 <pre><code>## Response [https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/]
-##   Date: 2020-06-15 22:21
+##   Date: 2020-06-16 00:27
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 1.38 MB
-## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpwZoYWo\file57982ab75e4f.csv</code></pre>
+## &lt;ON DISK&gt;  C:\Users\markg\AppData\Local\Temp\RtmpEPzEcL\file1e00301f774a.csv</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#read the Dataset sheet into “R”. The dataset will be called &quot;data&quot;.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(tf)</span></code></pre></div>
 </div>
