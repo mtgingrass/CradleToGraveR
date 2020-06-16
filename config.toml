@@ -20,13 +20,13 @@ disqusShortame = "https-cradletograver-com"
 
   [[menu.main]]
     identifier = "about"
-    name = "about hugo"
+    name = "About"
     pre = "<i class='fa fa-heart'></i>"
     url = "/about/"
     weight = -110
 
   [[menu.main]]
-    name = "getting started"
+    name = "Blog"
     post = "<span class='alert'>New!</span>"
     pre = "<i class='fa fa-road'></i>"
     url = "/getting-started/"
